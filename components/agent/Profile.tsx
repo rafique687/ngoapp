@@ -1,11 +1,13 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SchemeContext } from "../../context/SchemeContext";
 
 export default function Profile() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const { selectedScheme, setSelectedScheme } = useContext(SchemeContext);
 
   return (
     <View style={styles.container}>
@@ -34,9 +36,32 @@ export default function Profile() {
       {/* DROPDOWN */}
       {open && (
         <View style={styles.dropdown}>
-          <Text style={styles.schemeItem}>📌 Sukanya Yogna</Text>
-          <Text style={styles.schemeItem}>📌 NGO</Text>
-          <Text style={styles.schemeItem}>📌 Social Support</Text>
+          <TouchableOpacity
+            onPress={() => {
+              setSelectedScheme("Sukanya Yogna");
+              setOpen(false);
+            }}
+          >
+            <Text style={styles.schemeItem}>📌 Sukanya Yogna</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              setSelectedScheme("NGO");
+              setOpen(false);
+            }}
+          >
+            <Text style={styles.schemeItem}>📌 NGO</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              setSelectedScheme("Social Support");
+              setOpen(false);
+            }}
+          >
+            <Text style={styles.schemeItem}>📌 Social Support</Text>
+          </TouchableOpacity>
         </View>
       )}
 

@@ -1,12 +1,14 @@
+import React, { useContext } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { SchemeContext } from "../../context/SchemeContext";
 
 export default function index() {
   const complete = 70; // percentage
-
+  const { selectedScheme } = useContext(SchemeContext);
   return (
     <View style={styles.container}>
       <Text style={styles.header}>
-        🏠 Upcoming Marriage <button style={styles.button}>All Merriage</button>
+        🏠 {selectedScheme ? selectedScheme : "All Marriage"}
       </Text>
 
       {/* CARD 1 */}
